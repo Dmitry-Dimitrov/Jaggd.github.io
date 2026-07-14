@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaggd — Найм Senior-разработчиков</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #0066ff;
+        }
+
+        .nav a {
+            color: #1a1a1a;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .nav a:hover {
+            color: #0066ff;
+        }
+
+        /* Главный экран */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(145deg, #0066ff, #0044cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .btn {
+            background: #0066ff;
+            color: #fff !important;
+            border: none;
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: #0044cc;
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+        }
+
+        /* Секции общие */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #555;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        /* Блок "Боль" */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .pain-stat {
+            font-size: 72px;
+            font-weight: 800;
+            color: #0066ff;
+            line-height: 1;
+        }
+
+        .pain-stat small {
+            font-size: 24px;
+            font-weight: 400;
+            color: #1a1a1a;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .pain-text {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .pain-text strong {
+            color: #cc0000;
+        }
+
+        /* Блок "Решение" */
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .method-card {
+            background: #f8faff;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #0066ff;
+        }
+
+        .method-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .method-card p {
+            color: #444;
+            font-size: 16px;
+        }
+
+        .method-card .highlight {
+            font-weight: 600;
+            color: #0066ff;
+        }
+
+        .quote {
+            margin-top: 40px;
+            padding: 24px 30px;
+            background: #f0f5ff;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 500;
+            border-left: 6px solid #0066ff;
+        }
+
+        /* Блок "Гарантия" */
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .guarantee-item {
+            background: #fafafa;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .guarantee-item .number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0066ff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .guarantee-item p {
+            font-size: 16px;
+            color: #444;
+        }
+
+        .guarantee-result {
+            margin-top: 40px;
+            padding: 30px;
+            background: #e6f0ff;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .guarantee-result span {
+            color: #0066ff;
+        }
+
+        /* Блок "Призыв" */
+        .cta {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: #555;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0 30px;
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .footer a {
+            color: #0066ff;
+            text-decoration: none;
+        }
+
+        /* Адаптив для телефонов */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .pain-grid,
+            .method-grid,
+            .guarantee-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pain-stat {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .nav a {
+                margin-left: 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ШАПКА -->
+        <header class="header">
+            <div class="logo">Jaggd<span>.</span></div>
+            <div class="nav">
+                <a href="#pain">Проблема</a>
+                <a href="#method">Метод</a>
+                <a href="#guarantee">Гарантия</a>
+            </div>
+        </header>
+
+        <!-- ГЛАВНЫЙ ЭКРАН -->
+        <section class="hero">
+            <h1>Закройте вакансию <span>Senior’а</span> за неделю</h1>
+            <p>Платите только через 30 дней после того, как кандидат вышел на работу.</p>
+            <a href="#cta" class="btn">Забрать пилотный проект</a>
+        </section>
+
+        <!-- БОЛЬ -->
+        <section class="section" id="pain">
+            <div class="pain-grid">
+                <div>
+                    <div class="pain-stat">
+                        80%
+                        <small>кандидатов используют ИИ на собеседованиях</small>
+                    </div>
+                    <div style="margin-top: 20px; font-size: 18px; color: #333;">
+                        <strong>Вы нанимаете операторов ChatGPT, а не инженеров.</strong>
+                    </div>
+                </div>
+                <div class="pain-text">
+                    <p>Традиционные собеседования проверяют память. ИИ проверяет память лучше любого человека. Поэтому вы получаете идеальные ответы на тестах — и <strong>провал в работе</strong>.</p>
+                    <p style="margin-top: 16px; font-size: 20px; font-weight: 700; color: #cc0000;">
+                        Стоимость одной ошибки — до 20 млн ₽
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- РЕШЕНИЕ / МЕТОД -->
+        <section class="section" id="method">
+            <h2 class="section-title">Мы проверяем мышление в неопределённости</h2>
+            <p class="section-subtitle">Кандидат получает задачу, которую нельзя решить в лоб. ИИ здесь не поможет.</p>
+
+            <div class="method-grid">
+                <div class="method-card">
+                    <h3>🔍 Что получает кандидат</h3>
+                    <p>«Черный ящик» — среду с неизвестными правилами. Один пример запроса и ответа. <span class="highlight">Больше никакой информации.</span></p>
+                </div>
+                <div class="method-card">
+                    <h3>🧠 Что он должен сделать</h3>
+                    <p>За час экспериментально понять, как работает эта среда. Можно отправлять любые запросы, сколько угодно раз.</p>
+                </div>
+                <div class="method-card">
+                    <h3>⚡ Что мы проверяем</h3>
+                    <p>Строит ли гипотезы? Проверяет ли их? Замечает ли ошибки? Или просто копирует ответ из ИИ?</p>
+                </div>
+                <div class="method-card">
+                    <h3>🚫 Что мы отсеиваем</h3>
+                    <p>Тех, кто говорит <span class="highlight">«мне ИИ сказал»</span> — без проверки, без анализа, без понимания.</p>
+                </div>
+            </div>
+
+            <div class="quote">
+                «Программист, который это написал, улетел на Луну. Его не спросить. Только эксперименты.»
+            </div>
+        </section>
+
+        <!-- ГАРАНТИЯ / ОПЛАТА -->
+        <section class="section" id="guarantee">
+            <h2 class="section-title">Единственная гарантия, которая вам нужна</h2>
+            <p class="section-subtitle">Мы не берём денег вперёд. Вы платите только за результат.</p>
+
+            <div class="guarantee-grid">
+                <div class="guarantee-item">
+                    <span class="number">1</span>
+                    <p><strong>Кандидат прошёл наш отбор</strong><br>Мы проверили его мышление, а не память.</p>
+                </div>
+                <div class="guarantee-item">
+                    <span class="number">2</span>
+                    <p><strong>Вы сделали ему оффер</strong><br>Он соответствует вашим требованиям по стеку и культуре.</p>
+                </div>
+                <div class="guarantee-item">
+                    <span class="number">3</span>
+                    <p><strong>Он проработал у вас 30 дней</strong><br>Вы убедились, что он реально работает.</p>
+                </div>
+            </div>
+
+            <div class="guarantee-result">
+                Платите <span>15–20% от годовой зарплаты</span>.<br>
+                Не подошёл — <span>не платите ничего</span>. Мы продолжаем поиск.
+            </div>
+
+            <p style="text-align: center; margin-top: 30px; font-size: 18px; color: #333;">
+                <strong>Мы рискуем своим временем. Вы — только оффером.</strong>
+            </p>
+        </section>
+
+        <!-- ПРИЗЫВ И ФУТЕР -->
+        <section class="section cta" id="cta">
+            <h2>Готовы проверить на одной вакансии?</h2>
+            <p>Напишите нам «Пилот» — и мы в течение 15 минут покажем, как работает наш метод на вашей реальной задаче.</p>
+            <a href="mailto:zakaz@jaggd.work?subject=Пилот%20для%20вакансии" class="btn">Написать «Пилот»</a>
+        </section>
+
+        <footer class="footer">
+            <p>
+                <a href="#">jaggd.work</a> · 
+                <a href="mailto:zakaz@jaggd.work">zakaz@jaggd.work</a> · 
+                <a href="#">@jaggd_hr</a>
+            </p>
+            <p style="margin-top: 8px; font-size: 13px; color: #aaa;">
+                Jaggd — найм, который не требует доработок.
+            </p>
+        </footer>
+
+    </div>
+</body>
+</html>
